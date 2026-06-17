@@ -1,0 +1,62 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const path = require('path');
+const fs = require('fs');
+
+dotenv.config();
+
+const app = express();
+const PREFERRED_PORT = parseInt(process.env.PORT) || 8000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/farmers', require('./routes/farmers'));
+app.use('/api/products', require('./routes/products'));
+app.use('/api/schemes', require('./routes/schemes'));
+
+app.use('/api/gi', require('./routes/giProducts'));
+app.use('/api/chat', require('./routes/chatqa'));
+app.use('/api/chatai', require('./routes/chatai'));
+app.use('/api/prices', require('./routes/prices'));
+app.use('/api/weather', require('./routes/weather'));
+app.use('/api/orders', require('./routes/orders'));
+app.use('/api/shared-trips', require('./routes/sharedTrips'));
+
+const autoSeed = require('./seed');
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    autoSeed();
+  })
+  .catch((err) => console.error('MongoDB error:', err));
+
+app.get('/', (req, res) => res.send('🌾 KrushiMitra API Running'));
+
+// Dynamic port — try preferred port, if busy try next ones
+function startServer(port, maxRetries = 10) {
+  const server = app.listen(port, () => {
+    console.log(`🚀 Server running on http://localhost:${port}`);
+    // Write active port to a file so client can read it
+    const portFile = path.join(__dirname, '..', '.active_port');
+    fs.writeFileSync(portFile, String(port));
+  });
+
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE' && maxRetries > 0) {
+      console.log(`⚠️ Port ${port} is busy, trying ${port + 1}...`);
+      startServer(port + 1, maxRetries - 1);
+    } else {
+      console.error('❌ Server failed to start:', err.message);
+      process.exit(1);
+    }
+  });
+}
+
+startServer(PREFERRED_PORT);
