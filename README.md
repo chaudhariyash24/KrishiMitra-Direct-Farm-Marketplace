@@ -10,6 +10,12 @@
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status" />
 </p>
 
+## 🚀 Live Demo
+
+You can access the live deployed application here: **[krishi-mitra-direct-farm-marketplac.vercel.app](https://krishi-mitra-direct-farm-marketplac.vercel.app)**
+
+---
+
 ## 🎯 Problem Statement
 In traditional agriculture systems, farmers face severe economic exploitation from intermediate middlemen who squeeze their margins. Additionally, small-scale farmers lack real-time local weather forecasts and interactive maps displaying nearby seed banks, soil clinics, and markets. KrishiMitra removes the middlemen by offering a direct-to-consumer listing platform with geo-mapped agricultural resources.
 
