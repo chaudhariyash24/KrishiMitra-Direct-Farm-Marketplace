@@ -10,19 +10,6 @@
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status" />
 </p>
 
----
-
-## 📷 Demo & Screenshots
-*(Insert high-quality app GIF or screenshot here)*
-![KrishiMitra Dashboard Screenshot](https://via.placeholder.com/800x450.png?text=KrishiMitra+Marketplace+Dashboard)
-
----
-
-## 🔗 Live Demo
-🚀 **Explore the Live App**: [Live Deployment Link Placeholder (e.g. Vercel / Netlify)]
-
----
-
 ## 🎯 Problem Statement
 In traditional agriculture systems, farmers face severe economic exploitation from intermediate middlemen who squeeze their margins. Additionally, small-scale farmers lack real-time local weather forecasts and interactive maps displaying nearby seed banks, soil clinics, and markets. KrishiMitra removes the middlemen by offering a direct-to-consumer listing platform with geo-mapped agricultural resources.
 
