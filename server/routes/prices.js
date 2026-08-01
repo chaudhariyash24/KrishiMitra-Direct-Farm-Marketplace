@@ -224,7 +224,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // ========== data.gov.in Integration ==========
-const DATAGOV_API_KEY = process.env.DATAGOV_API_KEY || '579b464db66ec23bdd0000010d818f2f1320407d7a81d8462704af84';
+const DATAGOV_API_KEY = process.env.DATAGOV_API_KEY;
 const DATAGOV_RESOURCE = '9ef84268-d588-465a-a308-a864a43d0070';
 const DATAGOV_BASE = `https://api.data.gov.in/resource/${DATAGOV_RESOURCE}`;
 
